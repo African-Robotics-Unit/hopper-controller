@@ -19,9 +19,18 @@ This assumes you are running from the Lab Speedgoat PC which already has the req
 ## Control Structure
 Discrete state controller based on the Raibert controller [^1]
 
-<p align="center">
-<img src="https://github.com/African-Robotics-Unit/hopper-controller/blob/main/hopper-fsm.jpg" width="400">
-</p>
+```mermaid
+  stateDiagram-v2
+  direction LR
+  [*] --> Rest
+  Rest --> Thrust: Start
+  Compression --> Rest: Stop
+  Thrust --> Unloading: T1
+  Unloading --> Flight: T2
+  Flight --> Compression: T3
+  Compression --> Thrust: T4
+```
+
 
 The controller cycles through 5 discrete states defined in ```States.m``` which sequences the control actions.
 | State | Control Action |
@@ -32,15 +41,16 @@ The controller cycles through 5 discrete states defined in ```States.m``` which 
 | Flight | Adjust $\phi_0$ to position foot for touchdown based on current and desired horizontal speed |
 | Compression | Zero leg $\phi$ axis stiffness and damping, and $r$ axis damping |
 
+
 Transitions between controller states are triggered by changes in the robot state.
 | Transition | Trigger |
 | :--- | --- |
-| Rest ⭢ Thrust | Green start button pressed on controller |
-| Thrust ⭢ Unloading | Leg has extended past its neutral length ( $r > r_0$ ) |
-| Unloading ⭢ Flight | Foot has left the ground ( $y_{foot} > 0$ ) |
-| Flight ⭢ Compression | Leg is being compressed ( $\dot{r} < -1$ ) while body is falling ( $\dot{y}_{body} < 0$ ) |
-| Compression ⭢ Thrust | Leg is fully compressed and has begun extending ( $\dot{r} > 0$ ) while below its neutral point ( $r < r_0$ ) |
-| Compression ⭢ Rest | Red stop button pressed on controller |
+| Start | Green start button pressed on controller |
+| T1 | Leg has extended past its neutral length ( $r > r_0$ ) |
+| T2 | Foot has left the ground ( $y_{foot} > 0$ ) |
+| T3 | Leg is being compressed ( $\dot{r} < -1$ ) while body is falling ( $\dot{y}_{body} < 0$ ) |
+| T4 | Leg is fully compressed and has begun extending ( $\dot{r} > 0$ ) while below its neutral point ( $r < r_0$ ) |
+| Stop | Red stop button pressed on controller |
 
 
 ### Leg Impedance Control
