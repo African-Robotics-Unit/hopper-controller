@@ -7,7 +7,7 @@ This assumes you are running from the Speedgoat PC which already has the require
 2. Connect power and 5 pin CAN to the robot
 3. Power on and index the [boom](https://github.com/African-Robotics-Unit/boom-firmware)
 4. Ensure the legs are free to move and that upper links are horizontal
-5. Turn on 48V supply to the ODrive and allow the legs to fidn their index points
+5. Turn on 48V supply to the ODrive and allow the legs to find their index points
 6. Add the ```kinematics``` folder to the Matlab path
 7. Open and start `demo.slx` on the Speedgoat
 8. The green controller button will start the robot hopping and holding the red button will stop
@@ -22,7 +22,7 @@ Discrete state controller based on the Raibert controller [^1]
 
 The controller cycles through 5 discrete states defined in ```States.m``` which sequences the control actions.
 | State | Control Action |
-| ------------- | ------------- |
+| :--- | --- |
 | Rest | Moderately stiff and damped leg to keep the body upright and standing |
 | Thrust | Small thrust force in the $r$ direction to overcome losses and maintain a hopping. Zero leg $\phi$ axis stiffness and damping and $r$ axis damping. |
 | Unloading | Stop applying a thrust force and let the leg retract back to its neutral point |
@@ -31,7 +31,7 @@ The controller cycles through 5 discrete states defined in ```States.m``` which 
 
 Transitions between controller states are triggered by changes in the robot state.
 | Transition | Trigger |
-| ------------- | ------------- |
+| :--- | --- |
 | Rest ⭢ Thrust | Green start button pressed on controller |
 | Thrust ⭢ Unloading | Leg has extended past its neutral length ( $r > r_0$ ) |
 | Unloading ⭢ Flight | Foot has left the ground ( $y_{foot} > 0$ ) |
@@ -70,7 +70,9 @@ Hopping height is controlled by the radial thrust force. In an ideal world no th
 
 ### Velocity Control
 The neutral point is given by
+
 $$ x_{netral} = \frac{\dot{x}T_s}{2} $$
+
 with $x = 0$ being directly below the hip. Placement of the foot ahead or behind the neutral point produces horizontal accelerations. A proportional controller with gain $K_v$ is used to determine foot placement and control horizontal velocity.
 
 $$ x_{foot} = \frac{\dot{x}T_s}{2} + K_v(\dot{x} - \dot{x}_d) $$
@@ -95,7 +97,7 @@ To configure the ODrive with correct motor and CAN parameters, and run motor cal
 1. Remove the legs
 2. Power ODrive with 48V
 3. Connect ODrive to PC
-4. Run `odrive-config.py`, this might require you to [install odrivetool](https://docs.odriverobotics.com/v/latest/odrivetool.html#install-odrivetool)
+4. Run `odrive-config.py`, this requires you to [install odrivetool](https://docs.odriverobotics.com/v/latest/odrivetool.html#install-odrivetool)
 
 
 ## Debugging ODrive
