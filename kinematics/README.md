@@ -2,6 +2,10 @@
 
 This describes the forward kinematic calculations implemented in ```compute_kinematics.m```
 
+<p align="center">
+<img src="https://github.com/African-Robotics-Unit/hopper-controller/blob/main/kinematics/leg.jpg" width="400">
+</p>
+
 ### Knees
 The positions of the left and right knees can be calculated from the hip width $w$ the femur length $l_f$ and the left and right hip angles, $\theta_L$ and $\theta_R$ respectively.
 
@@ -34,6 +38,18 @@ $$ x_{f} = x_a + l_{a\parallel}\cos(\alpha) + l_{a\perp}\cos(\alpha+\frac{\pi}{2
 $$ y_{f} = y_a + l_{a\parallel}\sin(\alpha) + l_{a\perp}\sin(\alpha+\frac{\pi}{2}) $$
 
 
+## Dimensions
+### Leg
+| Description | Symbol | Length |
+| :--- | --- | --- |
+| Hip width | $w$ | 100mm |
+| Femur length | $l_f$ | 125mm |
+| Tibia length | $l_t$ | 250mm |
 
-### Jacobian Weirdness
-
+### Ankle
+| Foot | $l_{a\parallel}$ | $l_{a\perp}$ |
+| :--- | --- | --- |
+| Ball | 30mm | 0mm |
+| J | 98mm | 112mm |
+| C | 110mm | 55mm |
+| Hybrid | 80mm | 116mm |
