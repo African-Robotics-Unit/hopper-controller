@@ -5,7 +5,7 @@
 </p>
 
 ## Getting Started
-This assumes you are running from the Lab Speedgoat PC which already has the [required dependencies](https://github.com/African-Robotics-Unit/hopper-controller/blob/main/README.md#L123-L129) installed
+This assumes you are running from the Lab Speedgoat PC which already has the [required dependencies](https://github.com/African-Robotics-Unit/hopper-controller/blob/main/README.md?plain=1#L123-L129) installed
 1. Attach robot to the boom
 2. Connect power and 5 pin CAN to the robot
 3. Power on and index the [boom](https://github.com/African-Robotics-Unit/boom-firmware)
