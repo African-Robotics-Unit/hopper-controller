@@ -54,7 +54,7 @@ Transitions between controller states are triggered by changes in the robot stat
 
 
 ### Leg Impedance Control
-The leg is controlled in polar coordinates with a radial length $r$ and an angle $\phi$ from the body to the ankle, kind of like a pogo stick. Force in this polar frame is controlled by computing the required left $\tau_L$ and right $\tau_R$ motor torques from the desired radial force $F_r$ and torque $\tau_{\phi}$ using the leg polar Jacobian $J_p$ calculated from the [leg formward kinematics](kinematics/README.md).
+The leg is controlled in polar coordinates with a radial length $r$ and an angle $\phi$ from the body to the ankle, kind of like a pogo stick. Force in this polar frame is controlled by computing the required left $\tau_L$ and right $\tau_R$ motor torques from the desired radial force $F_r$ and torque $\tau_{\phi}$ using the leg polar Jacobian $J_p$ calculated from the [leg forward kinematics](kinematics/README.md).
 
 $$
 \begin{bmatrix}
