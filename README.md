@@ -69,9 +69,9 @@ $$
 
 This ignores the mass and dynamics of the legs, but is still a reasonable approximation as the links are relatively light. A PD controller on each of the polar axes enables tracking of desired position and velocity setpoints $r_0$, $\phi_0$ and $\dot{r}_0$, $\dot{\phi}_0$.
 
-$$ F_r = Kp_r(r_0 - r_{leg}) + Kd_r(\dot{r}_0 - \dot{r}_{leg}) + F_{thrust} $$
+$$ F_r = K_p(r_0 - r_{leg}) + Kd_r(\dot{r_0} - \dot{r_{leg}}) + F_{thrust} $$
 
-$$ \tau_{\phi} = Kp_{\phi}(\phi_0 - \phi_{leg}) + Kd_{\phi}(\dot{\phi}_0 - \dot{\phi}_{leg}) $$
+$$ \tau_{\phi} = Kp_{\phi}(\phi_0 - \phi_{leg}) + Kd_{\phi}(\dot{\phi_0} - \dot{\phi_{leg}}) $$
 
 These PD controllers behave like a parallel spring and damper where $Kp$ is the spring stiffness with units $\frac{N}{m}$ or $\frac{Nm}{rad}$ and $Kd$ is the damping constant with units $\frac{Ns}{m}$ or $\frac{Nms}{rad}$. The radial stiffness determines how much the leg compresses during landing. Higher jump heights will need higher radial stiffness to stop the leg bottoming out (think pogo stick). The polar angle stiffness determines how quickly the leg repositions during flight. The damping constants are typically set to keep the axes more or less critically damped and avoid any oscillations.
 
